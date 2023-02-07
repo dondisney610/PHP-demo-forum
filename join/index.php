@@ -133,11 +133,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     <?php if(isset($error['image']) && $error['image'] === 'type'): ?>
                         <p class="error">* 写真などは「.png」または「.jpg」の画像を指定してください</p>
                     <?php endif; ?>
-                    <p class="error">* 恐れ入りますが、画像を改めて指定してください</p>
+                    <?php if(isset($_GET['action']) && $_GET['action'] === 'rewrite' && isset($_SESSION['form'])) :?>
+                        <p class="error">* 恐れ入りますが、画像を改めて指定してください</p>
+                    <?php endif; ?>
                 </dd>
             </dl>
             <div><input type="submit" value="入力内容を確認する"/></div>
         </form>
+        <p>すでに会員登録済みの方はこちら</p>
+        <p>&raquo;<a href="../login.php">ログイン画面へ移動する</a></p>
     </div>
 </body>
 
