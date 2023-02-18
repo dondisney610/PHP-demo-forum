@@ -64,18 +64,18 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 <dt>メールアドレス</dt>
                 <dd>
                     <input type="text" name="email" size="35" maxlength="255" value="<?php echo h($email); ?>"/>
-                    <?php if(isset($error['login']) && $error['login'] === 'blank'): ?>
-                        <p class="error">* メールアドレスとパスワードをご記入ください</p>
-                    <?php endif; ?>
-                    <?php if(isset($error['login']) && $error['login'] === 'failed'): ?>
-                        <p class="error">* ログインに失敗しました。正しくご記入ください。</p>
-                    <?php endif; ?>
                 </dd>
                 <dt>パスワード</dt>
                 <dd>
                     <input type="password" name="password" size="35" maxlength="255" value="<?php echo h($password); ?>"/>
                 </dd>
             </dl>
+                    <?php if(isset($error['login']) && $error['login'] === 'blank'): ?>
+                        <p class="error">* メールアドレスとパスワードをご記入ください</p>
+                    <?php endif; ?>
+                    <?php if(isset($error['login']) && $error['login'] === 'failed'): ?>
+                        <p class="error">* ログインに失敗しました。正しくご記入ください。</p>
+                    <?php endif; ?>
             <div>
                 <input type="submit" value="ログインする"/>
             </div>
