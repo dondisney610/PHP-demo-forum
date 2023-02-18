@@ -1,5 +1,17 @@
 <?php
+// セッションの有効期限を30分に設定
+ini_set('session.gc_maxlifetime', 1800);
 session_start();
+// 最後のアクセス時間が設定されていない場合、現在の時間をセット
+if (!isset($_SESSION['last_access_time'])) {
+    $_SESSION['last_access_time'] = time();
+}
+// 最後のアクセス時間から30分以上経過している場合、セッションを破棄
+if (time() - $_SESSION['last_access_time'] > 1800) {
+    session_unset();
+    session_destroy();
+}
+
 require('library.php');
 
 if(isset($_SESSION['id']) && isset($_SESSION['name'])){
